@@ -1,6 +1,5 @@
 #ifndef BLACKBOARD_H
 #define BLACKBOARD_H
-
 #include <QMainWindow>
 
 namespace Ui {
@@ -20,6 +19,9 @@ private slots:
 
 private:
     Ui::BlackBoard *ui;
+    std::string host;
+    std::string n1;
+    std::string n2;
 };
 
 #endif // BLACKBOARD_H

@@ -23,7 +23,7 @@ void BlackBoard::on_pushButton_clicked()
 
     if(hostname == "test" && N1 == "2") {
         QMessageBox::information(this, "OK", "YAY");
-        ui->loginWidget->close();
+        ui->loginWidget->hide();
     }
     else {
         QMessageBox::information(this, "VACILO", "NOT YAY");
