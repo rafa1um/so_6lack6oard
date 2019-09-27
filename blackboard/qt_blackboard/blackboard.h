@@ -12,6 +12,9 @@ class BlackBoard : public QMainWindow
 
 public:
     explicit BlackBoard(QWidget *parent = nullptr);
+    std::string getHostname();
+    int getN1();
+    int getN2();
     ~BlackBoard();
 
 private slots:
@@ -19,9 +22,9 @@ private slots:
 
 private:
     Ui::BlackBoard *ui;
-    std::string host;
-    std::string n1;
-    std::string n2;
+    QString host;
+    QString n1;
+    QString n2;
 };
 
 #endif // BLACKBOARD_H
