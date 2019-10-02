@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = blackboard1.0.0
-DISTDIR = /home/vcarloto/Documents/comp2019/so/so_6lack6oard/blackboard/qt_blackboard/.tmp/blackboard1.0.0
+DISTDIR = /home/rafa1um/UEL/ano_3/so/so_6lack6oard/blackboard/qt_blackboard/.tmp/blackboard1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so /usr/lib/libGL.so -lpthread   
@@ -52,8 +52,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = blackboard.cpp moc_blackboard.cpp
+SOURCES       = blackboard.cpp \
+		main.cpp moc_blackboard.cpp
 OBJECTS       = blackboard.o \
+		main.o \
 		moc_blackboard.o
 DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -65,43 +67,11 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/common/g++-base.conf \
 		/usr/lib/qt/mkspecs/common/g++-unix.conf \
 		/usr/lib/qt/mkspecs/qconfig.pri \
-		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KAuth.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCrash.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KI18n.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KItemModels.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNotifyConfig.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KParts.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KPty.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KSyntaxHighlighting.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KWallet.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_concurrent.pri \
@@ -131,11 +101,6 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediagsttools_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri \
@@ -156,7 +121,6 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri \
@@ -178,8 +142,6 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_uiplugin.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_uitools.pri \
@@ -202,10 +164,6 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
-		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
 		/usr/lib/qt/mkspecs/features/qt_functions.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
@@ -229,7 +187,9 @@ DIST          = addsub.x \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		blackboard.pro blackboard.h blackboard.cpp
+		blackboard.pro blackboard.h \
+		../addsub.h blackboard.cpp \
+		main.cpp
 QMAKE_TARGET  = blackboard
 DESTDIR       = 
 TARGET        = blackboard
@@ -250,43 +210,11 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/common/g++-base.conf \
 		/usr/lib/qt/mkspecs/common/g++-unix.conf \
 		/usr/lib/qt/mkspecs/qconfig.pri \
-		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KAuth.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KCrash.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KI18n.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KItemModels.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNotifyConfig.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KParts.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KPty.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KSyntaxHighlighting.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KWallet.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri \
-		/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_bootstrap_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_concurrent.pri \
@@ -316,11 +244,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediagsttools_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri \
@@ -341,7 +264,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri \
@@ -363,8 +285,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech.pri \
-		/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_uiplugin.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_uitools.pri \
@@ -387,10 +307,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 		/usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
-		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
-		/usr/lib/qt/mkspecs/modules/qt_Solid.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri \
-		/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri \
 		/usr/lib/qt/mkspecs/features/qt_functions.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
@@ -425,43 +341,11 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/common/g++-base.conf:
 /usr/lib/qt/mkspecs/common/g++-unix.conf:
 /usr/lib/qt/mkspecs/qconfig.pri:
-/usr/lib/qt/mkspecs/modules/qt_Attica.pri:
-/usr/lib/qt/mkspecs/modules/qt_KArchive.pri:
 /usr/lib/qt/mkspecs/modules/qt_KAuth.pri:
-/usr/lib/qt/mkspecs/modules/qt_KBookmarks.pri:
-/usr/lib/qt/mkspecs/modules/qt_KCodecs.pri:
-/usr/lib/qt/mkspecs/modules/qt_KCompletion.pri:
-/usr/lib/qt/mkspecs/modules/qt_KConfigCore.pri:
-/usr/lib/qt/mkspecs/modules/qt_KConfigGui.pri:
-/usr/lib/qt/mkspecs/modules/qt_KConfigWidgets.pri:
 /usr/lib/qt/mkspecs/modules/qt_KCoreAddons.pri:
-/usr/lib/qt/mkspecs/modules/qt_KCrash.pri:
-/usr/lib/qt/mkspecs/modules/qt_KDBusAddons.pri:
-/usr/lib/qt/mkspecs/modules/qt_KGlobalAccel.pri:
-/usr/lib/qt/mkspecs/modules/qt_KGuiAddons.pri:
-/usr/lib/qt/mkspecs/modules/qt_KI18n.pri:
-/usr/lib/qt/mkspecs/modules/qt_KIconThemes.pri:
-/usr/lib/qt/mkspecs/modules/qt_KIOCore.pri:
-/usr/lib/qt/mkspecs/modules/qt_KIOFileWidgets.pri:
-/usr/lib/qt/mkspecs/modules/qt_KIOGui.pri:
-/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri:
 /usr/lib/qt/mkspecs/modules/qt_KItemModels.pri:
-/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri:
-/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri:
-/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri:
-/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri:
-/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri:
-/usr/lib/qt/mkspecs/modules/qt_KNotifyConfig.pri:
-/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri:
-/usr/lib/qt/mkspecs/modules/qt_KParts.pri:
-/usr/lib/qt/mkspecs/modules/qt_KPty.pri:
-/usr/lib/qt/mkspecs/modules/qt_KService.pri:
 /usr/lib/qt/mkspecs/modules/qt_KSyntaxHighlighting.pri:
-/usr/lib/qt/mkspecs/modules/qt_KTextWidgets.pri:
-/usr/lib/qt/mkspecs/modules/qt_KWallet.pri:
-/usr/lib/qt/mkspecs/modules/qt_KWidgetsAddons.pri:
 /usr/lib/qt/mkspecs/modules/qt_KWindowSystem.pri:
-/usr/lib/qt/mkspecs/modules/qt_KXmlGui.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_accessibility_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_bootstrap_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_concurrent.pri:
@@ -491,11 +375,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_location.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_multimediagsttools_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri:
@@ -516,7 +395,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quick.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri:
@@ -538,8 +416,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech.pri:
-/usr/lib/qt/mkspecs/modules/qt_lib_texttospeech_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_uiplugin.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_uitools.pri:
@@ -562,10 +438,6 @@ Makefile: blackboard.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mk
 /usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri:
-/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri:
-/usr/lib/qt/mkspecs/modules/qt_Solid.pri:
-/usr/lib/qt/mkspecs/modules/qt_SonnetCore.pri:
-/usr/lib/qt/mkspecs/modules/qt_SonnetUi.pri:
 /usr/lib/qt/mkspecs/features/qt_functions.prf:
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
@@ -605,8 +477,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents blackboard.h $(DISTDIR)/
-	$(COPY_FILE) --parents blackboard.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents blackboard.h ../addsub.h $(DISTDIR)/
+	$(COPY_FILE) --parents blackboard.cpp main.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents blackboard.ui $(DISTDIR)/
 
 
@@ -645,7 +517,7 @@ compiler_moc_header_clean:
 moc_blackboard.cpp: blackboard.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/vcarloto/Documents/comp2019/so/so_6lack6oard/blackboard/qt_blackboard/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/vcarloto/Documents/comp2019/so/so_6lack6oard/blackboard/qt_blackboard -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/9.1.0 -I/usr/include/c++/9.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include-fixed -I/usr/include blackboard.h -o moc_blackboard.cpp
+	/usr/bin/moc $(DEFINES) --include /home/rafa1um/UEL/ano_3/so/so_6lack6oard/blackboard/qt_blackboard/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/rafa1um/UEL/ano_3/so/so_6lack6oard/blackboard/qt_blackboard -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/9.1.0 -I/usr/include/c++/9.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include-fixed -I/usr/include blackboard.h -o moc_blackboard.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -671,6 +543,10 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 blackboard.o: blackboard.cpp blackboard.h \
 		ui_blackboard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blackboard.o blackboard.cpp
+
+main.o: main.cpp ../addsub.h \
+		blackboard.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 moc_blackboard.o: moc_blackboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_blackboard.o moc_blackboard.cpp
