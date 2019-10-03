@@ -1,5 +1,3 @@
-// ---------- mainwindow.cpp ----------
-
 #include <QtWidgets>
 
 #include "mainwindow.h"
@@ -254,5 +252,3 @@ bool MainWindow::saveFile(const QByteArray &fileFormat)
         return scribbleArea->saveImage(fileName, fileFormat.constData());
     }
 }
-
-// ---------- END mainwindow.cpp ----------
