@@ -1,5 +1,3 @@
-// ---------- scribblearea.cpp ----------
-
 #include <QtWidgets>
 #if defined(QT_PRINTSUPPORT_LIB)
 #include <QtPrintSupport/qtprintsupportglobal.h>
@@ -199,5 +197,3 @@ void ScribbleArea::print()
     }
 #endif // QT_CONFIG(printdialog)
 }
-
-// ---------- END scribblearea.cpp ----------

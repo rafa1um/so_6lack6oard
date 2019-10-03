@@ -1,5 +1,3 @@
-// ---------- scribblearea.h ----------
-
 #ifndef SCRIBBLEAREA_H
 #define SCRIBBLEAREA_H
 
@@ -71,5 +69,3 @@ private:
 };
 
 #endif
-
-// ---------- END scribblearea.h ----------

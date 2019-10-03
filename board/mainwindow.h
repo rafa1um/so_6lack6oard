@@ -1,5 +1,3 @@
-// ---------- mainwindow.h ----------
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -66,5 +64,3 @@ private:
 };
 
 #endif
-
-// ---------- END mainwindow.h ----------
