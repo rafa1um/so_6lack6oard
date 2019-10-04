@@ -7,7 +7,12 @@
 class Client
 {
 public:
-    int add(CLIENT *clnt, int x, int y);
-    int sub(CLIENT *clnt, int x, int y);
+    int add(int x, int y);
+    int sub(int x, int y);
+    bool start(const char *hostname);
+
+private:
+    CLIENT *clnt;
+    int x, y;
 };
 #endif
