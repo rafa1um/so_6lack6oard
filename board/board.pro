@@ -25,15 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        input.cpp \
         main.cpp \
         mainwindow.cpp \
         scribblearea.cpp
 
 HEADERS += \
+        input.h \
         mainwindow.h \
         scribblearea.h
 
 FORMS += \
+        input.ui \
         mainwindow.ui
 
 # Default rules for deployment.

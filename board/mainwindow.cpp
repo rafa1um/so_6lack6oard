@@ -6,6 +6,8 @@
 // MainWindow constructor
 MainWindow::MainWindow()
 {
+
+
     // Create the ScribbleArea widget and make it
     // the central widget
     scribbleArea = new ScribbleArea;
