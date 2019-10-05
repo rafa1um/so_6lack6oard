@@ -29,13 +29,14 @@ SOURCES += \
         input.cpp \
         main.cpp \
         mainwindow.cpp \
-        scribblearea.cpp
-
+        scribblearea.cpp \
+        client.cpp addsub_clnt.c addsub_xdr.c
 
 HEADERS += \
         input.h \
         mainwindow.h \
-        scribblearea.h
+        scribblearea.h \
+        addsub.h
 
 FORMS += \
         input.ui \

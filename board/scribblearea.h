@@ -12,7 +12,7 @@ class ScribbleArea : public QWidget
     // for all Qt objects
     // QObjects handle events
     Q_OBJECT
-s
+
 public:
     ScribbleArea(QWidget *parent = 0);
 
