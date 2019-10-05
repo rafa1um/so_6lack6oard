@@ -2,6 +2,8 @@
 
 #include "mainwindow.h"
 #include "scribblearea.h"
+#include "input.h"
+#include "client.h"
 
 // MainWindow constructor
 MainWindow::MainWindow()
@@ -22,6 +24,25 @@ MainWindow::MainWindow()
 
     // Size the app
     resize(500, 500);
+    clnt = new Client;
+    inputBoard = new input;
+    connect(inputBoard, &input::inputReady, this, &MainWindow::inputHandler);
+    inputBoard->show();
+
+
+}
+
+void MainWindow::inputHandler(const char *host, int n1, int n2)
+{
+    if (clnt->start(host)){
+        int r1 = clnt->add(n1,n2);
+        int r2 = clnt->sub(n1,n2);
+
+        QMessageBox msgBox;
+        msgBox.setText("Add = " + QString::number(r1) + "\nSub = " + QString::number(r2));
+        int ret = msgBox.exec();
+    }
+
 }
 
 // User tried to close the app

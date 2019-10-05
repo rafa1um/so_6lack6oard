@@ -9,6 +9,8 @@ input::input(QWidget *parent) :
 {
     ui->setupUi(this);
     this->host = nullptr;
+    this->n1 = nullptr;
+    this->n2 = nullptr;
 }
 
 input::~input()
@@ -21,6 +23,7 @@ void input::on_pushButton_clicked()
     this->host = ui->textEdit->toPlainText();
     this->n1 = ui->textEdit_2->toPlainText();
     this->n2 = ui->textEdit_3->toPlainText();
+    emit inputReady(this->host.toUtf8().constData(), this->n1.toInt(), this->n2.toInt());
  }
 
 std::string input::getHostname()

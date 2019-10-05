@@ -6,6 +6,8 @@
 
 // ScribbleArea used to paint the image
 class ScribbleArea;
+class input;
+class Client;
 
 class MainWindow : public QMainWindow
 {
@@ -28,6 +30,7 @@ private slots:
     void penColor();
     void penWidth();
     void about();
+    void inputHandler(const char *host, int n1, int n2);
 
 private:
     // Will tie user actions to functions
@@ -42,6 +45,8 @@ private:
 
     // What we'll draw on
     ScribbleArea *scribbleArea;
+    input *inputBoard;
+    Client *clnt;
 
     // The menu widgets
     QMenu *saveAsMenu;

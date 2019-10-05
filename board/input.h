@@ -21,6 +21,9 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+signals:
+     void inputReady(const char *host, int n1, int n2);
+
 private:
     Ui::input *ui;
     QString host;

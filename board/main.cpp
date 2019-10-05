@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "input.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -8,8 +7,8 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     // Create and open the main window
-    input board;
-    board.show();
+    MainWindow mainWindow;
+    mainWindow.show();
 
     // Display the main window
     return app.exec();
