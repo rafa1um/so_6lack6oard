@@ -27,6 +27,7 @@ CONFIG += c++11
 
 SOURCES += \
         input.cpp \
+        inputboard.cpp \
         main.cpp \
         mainwindow.cpp \
         scribblearea.cpp
@@ -34,11 +35,13 @@ SOURCES += \
 
 HEADERS += \
         input.h \
+        inputboard.h \
         mainwindow.h \
         scribblearea.h
 
 FORMS += \
         input.ui \
+        inputboard.ui \
         mainwindow.ui
 
 # Default rules for deployment.
