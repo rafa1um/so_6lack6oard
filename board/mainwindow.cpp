@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "scribblearea.h"
 #include "input.h"
+#include "inputboard.h"
 #include "client.h"
 
 // MainWindow constructor
@@ -25,22 +26,22 @@ MainWindow::MainWindow()
     // Size the app
     resize(500, 500);
     clnt = new Client;
-    inputBoard = new input;
-    connect(inputBoard, &input::inputReady, this, &MainWindow::inputHandler);
+    inputBoard = new InputBoard;
+    connect(inputBoard, &InputBoard::inputBoardReady, this, &MainWindow::inputBoardHandler);
     inputBoard->show();
 
 
 }
 
-void MainWindow::inputHandler(const char *host, int n1, int n2)
+void MainWindow::inputBoardHandler(const char *host, int boardID)
 {
     if (clnt->start(host)){
-        int r1 = clnt->add(n1,n2);
-        int r2 = clnt->sub(n1,n2);
+       // int r1 = clnt->add(n1,n2);
+       // int r2 = clnt->sub(n1,n2);
 
-        QMessageBox msgBox;
-        msgBox.setText("Add = " + QString::number(r1) + "\nSub = " + QString::number(r2));
-        int ret = msgBox.exec();
+        // QMessageBox msgBox;
+        // msgBox.setText("Add = " + QString::number(r1) + "\nSub = " + QString::number(r2));
+        // int ret = msgBox.exec();
     }
 
 }
