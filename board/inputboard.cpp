@@ -18,6 +18,7 @@ void InputBoard::on_pushButton_clicked()
     this->host = ui->textEdit->toPlainText();
     this->boardID = ui->textEdit_2->toPlainText();
     emit inputBoardReady(this->host.toUtf8().constData(), this->boardID.toInt());
+    this->close();
 }
 
 std::string InputBoard::getHostname()
