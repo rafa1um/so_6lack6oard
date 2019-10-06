@@ -32,8 +32,8 @@ typedef struct board board;
 extern  int * update_board_1(board *, CLIENT *);
 extern  int * update_board_1_svc(board *, struct svc_req *);
 #define GET_LAST 2
-extern  int * get_last_1(board *, CLIENT *);
-extern  int * get_last_1_svc(board *, struct svc_req *);
+extern  board * get_last_1(board *, CLIENT *);
+extern  board * get_last_1_svc(board *, struct svc_req *);
 extern int addsub_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
@@ -41,8 +41,8 @@ extern int addsub_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 extern  int * update_board_1();
 extern  int * update_board_1_svc();
 #define GET_LAST 2
-extern  int * get_last_1();
-extern  int * get_last_1_svc();
+extern  board * get_last_1();
+extern  board * get_last_1_svc();
 extern int addsub_prog_1_freeresult ();
 #endif /* K&R C */
 

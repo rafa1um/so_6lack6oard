@@ -24,15 +24,15 @@ update_board_1(board *argp, CLIENT *clnt)
 	return (&clnt_res);
 }
 
-int *
+board *
 get_last_1(board *argp, CLIENT *clnt)
 {
-	static int clnt_res;
+	static board clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
 	if (clnt_call (clnt, GET_LAST,
 		(xdrproc_t) xdr_board, (caddr_t) argp,
-		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
+		(xdrproc_t) xdr_board, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
 	}

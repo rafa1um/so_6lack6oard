@@ -24,7 +24,7 @@ program ADDSUB_PROG
    version ADDSUB_VERSION
    {
      int UPDATE_BOARD (board) = 1;
-     int GET_LAST (board) = 2;
+     board GET_LAST (board) = 2;
    }
    = VERSION_NUMBER;
 }

@@ -9,6 +9,8 @@ class Client
 public:
     int add(int x, int y);
     int sub(int x, int y);
+    int update_board(board newBoard);
+    board get_last(board lastBoard);
     bool start(const char *hostname);
 
 private:
