@@ -14,6 +14,14 @@ ScribbleArea::ScribbleArea(QWidget *parent)
     myPenColor = Qt::magenta;
 }
 
+void ScribbleArea::setMyLastBoard(int x1, int y1, int x2, int y2, int r, int g, int b, int n){
+    myLastBoard = {x1, y1, x2, y2, r, g, b, n};
+}
+
+void ScribbleArea::setLastBoard(board last){
+    lastBoard = last;
+}
+
 // Used to change the pen color
 void ScribbleArea::setPenColor(const QColor &newColor)
 {

@@ -14,6 +14,61 @@ board Client::get_last(board lastBoard)
     return (*result);
 }
 
+bool Client::start(const char *hostname)
+{
+
+    /* cria uma struct CLIENT que referencia uma interface RPC */
+    clnt = clnt_create(hostname, ADDSUB_PROG, ADDSUB_VERSION, "udp");
+
+    /* verifica se a referência foi criada */
+    if (clnt == (CLIENT *)NULL)
+    {
+        clnt_pcreateerror(hostname);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+// int Client::add(int x, int y)
+// {
+//     operands ops;
+//     int *result;
+
+//     /* junta os parâmetros em um struct */
+//     ops.x = x;
+//     ops.y = y;
+
+//     /* chama a função remota */
+//     result = add_1(&ops, clnt);
+//     if (result == NULL)
+//     {
+//         printf("Problemas ao chamar a função remota\n");
+//         return FALSE;
+//     }
+
+//     return (*result);
+// }
+
+// int Client::sub(int x, int y)
+// {
+//     operands ops;
+//     int *result;
+
+//     /* junta os parâmetros em um struct */
+//     ops.x = x;
+//     ops.y = y;
+
+//     /* chama a função remota */
+//     result = sub_1(&ops, clnt);
+//     if (result == NULL)
+//     {
+//         printf("Problemas ao chamar a função remota\n");
+//         return FALSE;
+//     }
+//     return (*result);
+// }
+
 // int main(int argc, char *argv[])
 // {
 //     CLIENT *clnt;

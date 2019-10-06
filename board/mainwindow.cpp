@@ -28,12 +28,30 @@ MainWindow::MainWindow()
 void MainWindow::inputBoardHandler(const char *host, int boardID)
 {
     if (clnt->start(host)){
+        scribbleArea->setMyLastBoard(-1,0,0,0,0,boardID);
+        scribbleArea->setLastBoard(scribbleArea->myLastBoard);
+
        // int r1 = clnt->add(n1,n2);
        // int r2 = clnt->sub(n1,n2);
 
-        // QMessageBox msgBox;
-        // msgBox.setText("Add = " + QString::number(r1) + "\nSub = " + QString::number(r2));
-        // int ret = msgBox.exec();
+        QMessageBox msgBox;
+        msgBox.setText("Conectado com sucesso!");
+        int ret = msgBox.exec();
+
+        board next;
+
+        while(true){
+            next = clnt->get_last(scribbleArea->lastBoard);
+            if (next.r != scribbleArea->lastBoard.r){
+                QPoint qp1, qp2;
+                qp1.setX(next.x1);
+                qp1.setY(next.y1);
+                qp2.setX(next.x2);
+                qp2.setY(next.y2);
+                scribbleArea->drawLineTo(qp1 qp2);
+            }
+        }
+
     }
 
 }

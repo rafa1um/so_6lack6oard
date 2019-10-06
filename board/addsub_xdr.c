@@ -12,11 +12,15 @@ xdr_board (XDR *xdrs, board *objp)
 
 
 	if (xdrs->x_op == XDR_ENCODE) {
-		buf = XDR_INLINE (xdrs, 6 * BYTES_PER_XDR_UNIT);
+		buf = XDR_INLINE (xdrs, 8 * BYTES_PER_XDR_UNIT);
 		if (buf == NULL) {
-			 if (!xdr_int (xdrs, &objp->x))
+			 if (!xdr_int (xdrs, &objp->x1))
 				 return FALSE;
-			 if (!xdr_int (xdrs, &objp->y))
+			 if (!xdr_int (xdrs, &objp->y1))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->x2))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->y2))
 				 return FALSE;
 			 if (!xdr_int (xdrs, &objp->r))
 				 return FALSE;
@@ -27,8 +31,10 @@ xdr_board (XDR *xdrs, board *objp)
 			 if (!xdr_int (xdrs, &objp->n))
 				 return FALSE;
 		} else {
-			IXDR_PUT_LONG(buf, objp->x);
-			IXDR_PUT_LONG(buf, objp->y);
+			IXDR_PUT_LONG(buf, objp->x1);
+			IXDR_PUT_LONG(buf, objp->y1);
+			IXDR_PUT_LONG(buf, objp->x2);
+			IXDR_PUT_LONG(buf, objp->y2);
 			IXDR_PUT_LONG(buf, objp->r);
 			IXDR_PUT_LONG(buf, objp->g);
 			IXDR_PUT_LONG(buf, objp->b);
@@ -36,11 +42,15 @@ xdr_board (XDR *xdrs, board *objp)
 		}
 		return TRUE;
 	} else if (xdrs->x_op == XDR_DECODE) {
-		buf = XDR_INLINE (xdrs, 6 * BYTES_PER_XDR_UNIT);
+		buf = XDR_INLINE (xdrs, 8 * BYTES_PER_XDR_UNIT);
 		if (buf == NULL) {
-			 if (!xdr_int (xdrs, &objp->x))
+			 if (!xdr_int (xdrs, &objp->x1))
 				 return FALSE;
-			 if (!xdr_int (xdrs, &objp->y))
+			 if (!xdr_int (xdrs, &objp->y1))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->x2))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->y2))
 				 return FALSE;
 			 if (!xdr_int (xdrs, &objp->r))
 				 return FALSE;
@@ -51,8 +61,10 @@ xdr_board (XDR *xdrs, board *objp)
 			 if (!xdr_int (xdrs, &objp->n))
 				 return FALSE;
 		} else {
-			objp->x = IXDR_GET_LONG(buf);
-			objp->y = IXDR_GET_LONG(buf);
+			objp->x1 = IXDR_GET_LONG(buf);
+			objp->y1 = IXDR_GET_LONG(buf);
+			objp->x2 = IXDR_GET_LONG(buf);
+			objp->y2 = IXDR_GET_LONG(buf);
 			objp->r = IXDR_GET_LONG(buf);
 			objp->g = IXDR_GET_LONG(buf);
 			objp->b = IXDR_GET_LONG(buf);
@@ -61,9 +73,13 @@ xdr_board (XDR *xdrs, board *objp)
 	 return TRUE;
 	}
 
-	 if (!xdr_int (xdrs, &objp->x))
+	 if (!xdr_int (xdrs, &objp->x1))
 		 return FALSE;
-	 if (!xdr_int (xdrs, &objp->y))
+	 if (!xdr_int (xdrs, &objp->y1))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->x2))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->y2))
 		 return FALSE;
 	 if (!xdr_int (xdrs, &objp->r))
 		 return FALSE;

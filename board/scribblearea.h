@@ -5,6 +5,7 @@
 #include <QImage>
 #include <QPoint>
 #include <QWidget>
+#include "addsub.h"
 
 class ScribbleArea : public QWidget
 {
@@ -15,6 +16,11 @@ class ScribbleArea : public QWidget
 
 public:
     ScribbleArea(QWidget *parent = 0);
+    void drawLineTo(const QPoint &endPoint);
+    board myLastBoard;
+    board lastBoard;
+    void setMyLastBoard(int x1, int y1, int x2, int y2, int r, int g, int b, int n);
+    void setLastBoard(board last);
 
     // Handles all events
     void setPenColor(const QColor &newColor);
@@ -43,7 +49,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private:
-    void drawLineTo(const QPoint &endPoint);
+
     void resizeImage(QImage *image, const QSize &newSize);
 
     // Will be marked true or false depending on if
