@@ -28,9 +28,9 @@ board *get_last_1_svc(board *argp, struct svc_req *rqstp)
    {
       if (board_iterator->n == argp->n)
       {
-         break;
+         static board ret = *board_iterator;
+         return (&ret);
       }
    }
-   static board ret = *board_iterator;
-   return (&ret);
+   return nullptr;
 }
