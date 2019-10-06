@@ -40,7 +40,7 @@ addsub_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case GET_LAST:
 		_xdr_argument = (xdrproc_t) xdr_board;
-		_xdr_result = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_board;
 		local = (char *(*)(char *, struct svc_req *)) get_last_1_svc;
 		break;
 
