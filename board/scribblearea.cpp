@@ -124,6 +124,29 @@ void ScribbleArea::drawLineTo(const QPoint &endPoint)
     lastPoint = endPoint;
 }
 
+
+void ScribbleArea::drawLineToBoard(const QPoint &startPoint, const QPoint &endPoint)
+{
+    // Used to draw on the widget
+    QPainter painter(&image);
+
+    // Set the current settings for the pen
+    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap,
+                        Qt::RoundJoin));
+
+    // Draw a line from the last registered point to the current
+    painter.drawLine(startPoint, endPoint);
+
+    // Set that the image hasn't been saved
+    modified = true;
+
+    int rad = (myPenWidth / 2) + 2;
+
+    // Call to update the rectangular space where we drew
+    update(QRect(startPoint, endPoint).normalized()
+                                     .adjusted(-rad, -rad, +rad, +rad));
+}
+
 // When the app is resized create a new image using
 // the changes made to the image
 void ScribbleArea::resizeImage(QImage *image, const QSize &newSize)

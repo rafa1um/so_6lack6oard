@@ -17,6 +17,7 @@ class ScribbleArea : public QWidget
 public:
     ScribbleArea(QWidget *parent = 0);
     void drawLineTo(const QPoint &endPoint);
+    void drawLineToBoard(const QPoint &starpoint, const QPoint &endPoint);
     board myLastBoard;
     board lastBoard;
     void setMyLastBoard(int x1, int y1, int x2, int y2, int r, int g, int b, int n);
@@ -66,6 +67,8 @@ private:
 
     // Stores the image being drawn
     QImage image;
+
+    QPoint startPoint;
 
     // Stores the location at the current mouse event
     QPoint lastPoint;
