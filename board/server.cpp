@@ -4,22 +4,34 @@
 #include <list>
 #include <iterator>
 
-/* implementalção da função add */
-int *add_1_svc(operands *argp, struct svc_req *rqstp)
-{
-   static int result;
+// static std::list<board> Boards;
 
-   printf("Recebi chamado: add %d %d\n", argp->x, argp->y);
-   result = argp->x + argp->y;
-   return (&result);
+int *update_board_1_svc(board *argp, struct svc_req *rqstp)
+{
+   // std::list<board>::iterator board_iterator;
+   // for (board_iterator = Boards.begin(); board_iterator != Boards.end(); ++board_iterator)
+   // {
+   //    if (board_iterator->n == argp->n)
+   //    {
+   //       Boards.erase(board_iterator);
+   //       break;
+   //    }
+   // }
+   // Boards.push_front(*argp);
+   return 0;
 }
 
-/* implementação da função sub */
-int *sub_1_svc(operands *argp, struct svc_req *rqstp)
+int *get_last_1_svc(board *argp, struct svc_req *rqstp)
 {
-   static int result;
-
-   printf("Recebi chamado: sub %d %d\n", argp->x, argp->y);
-   result = argp->x - argp->y;
-   return (&result);
+   // std::list<board>::iterator board_iterator;
+   // for (board_iterator = Boards.begin(); board_iterator != Boards.end(); ++board_iterator)
+   // {
+   //    if (board_iterator->n == argp->n)
+   //    {
+   //       break;
+   //    }
+   // }
+   // static board ret = *board_iterator;
+   // // return (&ret);
+   return 0;
 }

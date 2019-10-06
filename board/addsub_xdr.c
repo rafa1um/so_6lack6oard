@@ -6,13 +6,72 @@
 #include "addsub.h"
 
 bool_t
-xdr_operands (XDR *xdrs, operands *objp)
+xdr_board (XDR *xdrs, board *objp)
 {
 	register int32_t *buf;
+
+
+	if (xdrs->x_op == XDR_ENCODE) {
+		buf = XDR_INLINE (xdrs, 6 * BYTES_PER_XDR_UNIT);
+		if (buf == NULL) {
+			 if (!xdr_int (xdrs, &objp->x))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->y))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->r))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->g))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->b))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->n))
+				 return FALSE;
+		} else {
+			IXDR_PUT_LONG(buf, objp->x);
+			IXDR_PUT_LONG(buf, objp->y);
+			IXDR_PUT_LONG(buf, objp->r);
+			IXDR_PUT_LONG(buf, objp->g);
+			IXDR_PUT_LONG(buf, objp->b);
+			IXDR_PUT_LONG(buf, objp->n);
+		}
+		return TRUE;
+	} else if (xdrs->x_op == XDR_DECODE) {
+		buf = XDR_INLINE (xdrs, 6 * BYTES_PER_XDR_UNIT);
+		if (buf == NULL) {
+			 if (!xdr_int (xdrs, &objp->x))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->y))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->r))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->g))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->b))
+				 return FALSE;
+			 if (!xdr_int (xdrs, &objp->n))
+				 return FALSE;
+		} else {
+			objp->x = IXDR_GET_LONG(buf);
+			objp->y = IXDR_GET_LONG(buf);
+			objp->r = IXDR_GET_LONG(buf);
+			objp->g = IXDR_GET_LONG(buf);
+			objp->b = IXDR_GET_LONG(buf);
+			objp->n = IXDR_GET_LONG(buf);
+		}
+	 return TRUE;
+	}
 
 	 if (!xdr_int (xdrs, &objp->x))
 		 return FALSE;
 	 if (!xdr_int (xdrs, &objp->y))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->r))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->g))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->b))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->n))
 		 return FALSE;
 	return TRUE;
 }
