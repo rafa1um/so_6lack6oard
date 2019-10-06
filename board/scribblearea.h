@@ -17,8 +17,6 @@ public:
     ScribbleArea(QWidget *parent = 0);
 
     // Handles all events
-    bool openImage(const QString &fileName);
-    bool saveImage(const QString &fileName, const char *fileFormat);
     void setPenColor(const QColor &newColor);
     void setPenWidth(int newWidth);
 
@@ -31,7 +29,6 @@ public slots:
 
     // Events to handle
     void clearImage();
-    void print();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

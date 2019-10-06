@@ -1,15 +1,5 @@
 #include <QtWidgets>
-#if defined(QT_PRINTSUPPORT_LIB)
-#include <QtPrintSupport/qtprintsupportglobal.h>
-#if QT_CONFIG(printdialog)
-#include <QPrinter>
-#include <QPrintDialog>
-#endif
-#endif
-
 #include "scribblearea.h"
-
-
 
 ScribbleArea::ScribbleArea(QWidget *parent)
     : QWidget(parent)
@@ -20,41 +10,8 @@ ScribbleArea::ScribbleArea(QWidget *parent)
     // Set defaults for the monitored variables
     modified = false;
     scribbling = false;
-    myPenWidth = 1;
-    myPenColor = Qt::blue;
-}
-
-// Used to load the image and place it in the widget
-bool ScribbleArea::openImage(const QString &fileName)
-{
-    // Holds the image
-    QImage loadedImage;
-
-    // If the image wasn't loaded leave this function
-    if (!loadedImage.load(fileName))
-        return false;
-
-    QSize newSize = loadedImage.size().expandedTo(size());
-    resizeImage(&loadedImage, newSize);
-    image = loadedImage;
-    modified = false;
-    update();
-    return true;
-}
-
-// Save the current image
-bool ScribbleArea::saveImage(const QString &fileName, const char *fileFormat)
-{
-    // Created to hold the image
-    QImage visibleImage = image;
-    resizeImage(&visibleImage, size());
-
-    if (visibleImage.save(fileName, fileFormat)) {
-        modified = false;
-        return true;
-    } else {
-        return false;
-    }
+    myPenWidth = 5;
+    myPenColor = Qt::magenta;
 }
 
 // Used to change the pen color
@@ -169,33 +126,10 @@ void ScribbleArea::resizeImage(QImage *image, const QSize &newSize)
 
     // Create a new image to display and fill it with white
     QImage newImage(newSize, QImage::Format_RGB32);
-    newImage.fill(qRgb(255, 255, 255));
+    newImage.fill(qRgb(0, 0, 0));
 
     // Draw the image
     QPainter painter(&newImage);
     painter.drawImage(QPoint(0, 0), *image);
     *image = newImage;
-}
-
-// Print the image
-void ScribbleArea::print()
-{
-    // Check for print dialog availability
-#if QT_CONFIG(printdialog)
-
-    // Can be used to print
-    QPrinter printer(QPrinter::HighResolution);
-
-    // Open printer dialog and print if asked
-    QPrintDialog printDialog(&printer, this);
-    if (printDialog.exec() == QDialog::Accepted) {
-        QPainter painter(&printer);
-        QRect rect = painter.viewport();
-        QSize size = image.size();
-        size.scale(rect.size(), Qt::KeepAspectRatio);
-        painter.setViewport(rect.x(), rect.y(), size.width(), size.height());
-        painter.setWindow(image.rect());
-        painter.drawImage(0, 0, image);
-    }
-#endif // QT_CONFIG(printdialog)
 }
