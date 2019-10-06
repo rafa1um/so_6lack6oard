@@ -20,8 +20,8 @@ static void
 addsub_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
-		operands add_1_arg;
-		operands sub_1_arg;
+		board update_board_1_arg;
+		board get_last_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -32,16 +32,16 @@ addsub_prog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		(void) svc_sendreply (transp, (xdrproc_t) xdr_void, (char *)NULL);
 		return;
 
-	case ADD:
-		_xdr_argument = (xdrproc_t) xdr_operands;
+	case UPDATE_BOARD:
+		_xdr_argument = (xdrproc_t) xdr_board;
 		_xdr_result = (xdrproc_t) xdr_int;
-		local = (char *(*)(char *, struct svc_req *)) add_1_svc;
+		local = (char *(*)(char *, struct svc_req *)) update_board_1_svc;
 		break;
 
-	case SUB:
-		_xdr_argument = (xdrproc_t) xdr_operands;
+	case GET_LAST:
+		_xdr_argument = (xdrproc_t) xdr_board;
 		_xdr_result = (xdrproc_t) xdr_int;
-		local = (char *(*)(char *, struct svc_req *)) sub_1_svc;
+		local = (char *(*)(char *, struct svc_req *)) get_last_1_svc;
 		break;
 
 	default:

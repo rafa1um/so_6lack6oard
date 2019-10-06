@@ -10,13 +10,13 @@
 static struct timeval TIMEOUT = { 25, 0 };
 
 int *
-add_1(operands *argp, CLIENT *clnt)
+update_board_1(board *argp, CLIENT *clnt)
 {
 	static int clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call (clnt, ADD,
-		(xdrproc_t) xdr_operands, (caddr_t) argp,
+	if (clnt_call (clnt, UPDATE_BOARD,
+		(xdrproc_t) xdr_board, (caddr_t) argp,
 		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);
@@ -25,13 +25,13 @@ add_1(operands *argp, CLIENT *clnt)
 }
 
 int *
-sub_1(operands *argp, CLIENT *clnt)
+get_last_1(board *argp, CLIENT *clnt)
 {
 	static int clnt_res;
 
 	memset((char *)&clnt_res, 0, sizeof(clnt_res));
-	if (clnt_call (clnt, SUB,
-		(xdrproc_t) xdr_operands, (caddr_t) argp,
+	if (clnt_call (clnt, GET_LAST,
+		(xdrproc_t) xdr_board, (caddr_t) argp,
 		(xdrproc_t) xdr_int, (caddr_t) &clnt_res,
 		TIMEOUT) != RPC_SUCCESS) {
 		return (NULL);

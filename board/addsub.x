@@ -6,13 +6,15 @@
 #define PROGRAM_NUMBER 1111111
 #define VERSION_NUMBER 1
 
-/* tipo de dado que ser� passado aos procedimentos remotos */
+/* tipo de dado que será passado aos procedimentos remotos */
 
-struct operands
-{
-        list <int> j;
-        int x;
-        int y;
+struct board {
+   int x;
+   int y;
+   int r;
+   int g;
+   int b;
+   int n;
 };
 
 /* Defini��o da interface que ser� oferecida aos clientes */
@@ -21,8 +23,8 @@ program ADDSUB_PROG
 {
    version ADDSUB_VERSION
    {
-     int ADD (operands) = 1;
-     int SUB (operands) = 2;
+     int UPDATE_BOARD (board) = 1;
+     int GET_LAST (board) = 2;
    }
    = VERSION_NUMBER;
 }
