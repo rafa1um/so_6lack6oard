@@ -2,14 +2,15 @@
 #define CLIENT_H
 
 #include <stdio.h>
-#include "addsub.h"
+#include "boards.h"
 
 class Client
 {
 public:
-    int update_board(board newBoard);
-    board get_last(board lastBoard);
+    int *update_board(board newBoard);
+    board *get_last(board lastBoard);
     bool start(const char *hostname);
+    bool equals(board b1, board b2);
 
 private:
     CLIENT *clnt;

@@ -1,4 +1,7 @@
 #include <QtWidgets>
+#include <QtConcurrent/qtconcurrentrun.h>
+#include <QFuture>
+#include <QThread>
 
 #include "mainwindow.h"
 #include "scribblearea.h"
@@ -27,33 +30,41 @@ MainWindow::MainWindow()
 
 void MainWindow::inputBoardHandler(const char *host, int boardID)
 {
+    scribbleArea->setMyLastBoard(-1, 0, 0, 0, 0, 0, 0, boardID);
+    scribbleArea->setLastBoard(scribbleArea->myLastBoard);
     if (clnt->start(host)){
-        scribbleArea->setMyLastBoard(-1,0,0,0,0,boardID);
-        scribbleArea->setLastBoard(scribbleArea->myLastBoard);
-
        // int r1 = clnt->add(n1,n2);
        // int r2 = clnt->sub(n1,n2);
 
         QMessageBox msgBox;
         msgBox.setText("Conectado com sucesso!");
         int ret = msgBox.exec();
-
-        board next;
-
-        while(true){
-            next = clnt->get_last(scribbleArea->lastBoard);
-            if (next.r != scribbleArea->lastBoard.r){
-                QPoint qp1, qp2;
-                qp1.setX(next.x1);
-                qp1.setY(next.y1);
-                qp2.setX(next.x2);
-                qp2.setY(next.y2);
-                scribbleArea->drawLineTo(qp1 qp2);
-            }
-        }
-
+        QFuture<void> f = QtConcurrent::run(this, &MainWindow::UpdateBoard);
     }
 
+}
+
+void MainWindow::UpdateBoard()
+{
+    board *next;
+    next = clnt->get_last(scribbleArea->lastBoard);
+
+    while(1){
+        next = clnt->get_last(scribbleArea->lastBoard);
+        if (next != nullptr){
+            QPoint qp1, qp2;
+            qp1.setX(next->x1);
+            qp1.setY(next->y1);
+            qp2.setX(next->x2);
+            qp2.setY(next->y2);
+            scribbleArea->drawLineToBoard(qp1, qp2);
+            scribbleArea->lastBoard = *next;
+        }
+        if (!clnt->equals(scribbleArea->lastBoard, scribbleArea->myLastBoard)){
+            scribbleArea->lastBoard = scribbleArea->myLastBoard;
+            clnt->update_board(scribbleArea->lastBoard);
+        }
+    }
 }
 
 // Opens a dialog to change the pen color

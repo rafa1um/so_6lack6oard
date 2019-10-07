@@ -1,24 +1,37 @@
 #include "client.h"
-#include "addsub.h"
 
-int Client::update_board(board input)
+int *Client::update_board(board input)
 {
     board newBoard = input;
-    int *result = update_board_1(&input, clnt);
-    return (*result);
+    int *result = update_board_7(&newBoard, clnt);
+    return result;
 }
 
-board Client::get_last(board lastBoard)
+board *Client::get_last(board lastBoard)
 {
-    board *result = get_last_1(&lastBoard, clnt);
-    return (*result);
+    board newBoard = lastBoard;
+    board *result = get_last_7(&newBoard, clnt);
+    if (equals(newBoard, *result))
+    {
+        return nullptr;
+    }
+    return result;
+}
+
+bool Client::equals(board b1, board b2)
+{
+    if ((b1.x1 == b2.x1) and (b1.x2 == b2.x2) and (b1.y1 = b2.y1) and (b1.y2 == b2.y2) and (b1.r == b2.r))
+    {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 bool Client::start(const char *hostname)
 {
 
     /* cria uma struct CLIENT que referencia uma interface RPC */
-    clnt = clnt_create(hostname, ADDSUB_PROG, ADDSUB_VERSION, "udp");
+    clnt = clnt_create(hostname, BOARDS_PROG, BOARDS_VERSION, "udp");
 
     /* verifica se a referência foi criada */
     if (clnt == (CLIENT *)NULL)

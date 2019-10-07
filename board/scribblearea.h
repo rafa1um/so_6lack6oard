@@ -5,7 +5,7 @@
 #include <QImage>
 #include <QPoint>
 #include <QWidget>
-#include "addsub.h"
+#include "boards.h"
 
 class ScribbleArea : public QWidget
 {
@@ -17,7 +17,7 @@ class ScribbleArea : public QWidget
 public:
     ScribbleArea(QWidget *parent = 0);
     void drawLineTo(const QPoint &endPoint);
-    void drawLineToBoard(const QPoint &starpoint, const QPoint &endPoint);
+    void drawLineToBoard(const QPoint &startPoint, const QPoint &endPoint);
     board myLastBoard;
     board lastBoard;
     void setMyLastBoard(int x1, int y1, int x2, int y2, int r, int g, int b, int n);
